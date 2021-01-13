@@ -1,4 +1,4 @@
 title: "My first tutorial"
 description: "This demo helps you get started with data cleaning and plotting in R"
 main: '1_data_cleaning_R.md'
-preview: "images/preview.png"
+preview: "figure/preview-1.png"
