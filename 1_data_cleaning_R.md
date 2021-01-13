@@ -1,8 +1,6 @@
 ---
 title: "Data Cleaning in R"
 author: "Octavio Medina"
-branch: "main"
-main: "1_data_cleaning_R.md"
 date: "1/13/2021"
 output: html_document
 ---
