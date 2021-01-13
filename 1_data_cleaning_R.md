@@ -107,3 +107,7 @@ penguins %>%
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
 
 
+# Test update
+
+This is a new section. Lorem ipsum dolor sit amet.
+
