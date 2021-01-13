@@ -40,7 +40,7 @@ You can also embed plots, for example:
 plot(pressure)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
@@ -92,22 +92,28 @@ Table: Data summary
 
 Now, a plot.
 
+Here we use the `palmerpenguins` dataset to plot a scatterplot using a couple of useful packages to make our figures nicer. 
+
+Check this out:
+
 
 ```r
+library(hrbrthemes)
+library(wesanderson)
+
 penguins %>%
   ggplot(aes(color = species, x = bill_length_mm, y = flipper_length_mm)) +
   geom_point() +
-  theme_minimal()
+  theme_ipsum_tw() +
+  scale_color_manual(values=wes_palette("Darjeeling1")) +
+  labs(title = "This is the penguin plot!",
+       subtitle = "A plot of a bunch of penguins belonging to different species")
 ```
 
 ```
 ## Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+![plot of chunk preview](figure/preview-1.png)
 
-
-# Test update
-
-This is a new section. Lorem ipsum dolor sit amet.
 
