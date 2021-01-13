@@ -28,9 +28,9 @@ summary(cars)
 
 ## Including Plots
 
-You can also embed plots, for example:
+You can also embed plots, for example, this not very exciting plot:
 
-```{r}
+```{r, dpi=300}
 
 plot(pressure)
 
@@ -39,6 +39,8 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ## Now, let's try using other libraries
+
+Skimr works great to get a quick summary of the data. We also load the `palmerpenguins` package as a sample dataset.
 
 ```{r}
 
@@ -59,7 +61,7 @@ Here we use the `palmerpenguins` dataset to plot a scatterplot using a couple of
 
 Check this out:
 
-```{r preview, fig.height= 3, fig.width=4}
+```{r preview, fig.height= 7, fig.width=8, dpi=300}
 
 library(hrbrthemes)
 library(wesanderson)

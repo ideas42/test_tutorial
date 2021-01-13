@@ -33,7 +33,7 @@ summary(cars)
 
 ## Including Plots
 
-You can also embed plots, for example:
+You can also embed plots, for example, this not very exciting plot:
 
 
 ```r
@@ -45,6 +45,8 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ## Now, let's try using other libraries
+
+Skimr works great to get a quick summary of the data. We also load the `palmerpenguins` package as a sample dataset.
 
 
 ```r
