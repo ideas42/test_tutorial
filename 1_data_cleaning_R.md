@@ -1,7 +1,3 @@
-Data Cleaning in R
-================
-Octavio Medina
-2021-01-28
 
 # Data importing and cleaning
 
@@ -91,8 +87,7 @@ Isn’t this cool? There’s also a function to see the degree of
 missingness for each of our variables. It’s called `vis_miss`:
 
 ``` r
-vis_miss(penguins_raw) +
-  theme_42()
+vis_miss(penguins_raw) 
 ```
 
 ![](1_data_cleaning_R_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->

@@ -1,7 +1,4 @@
 ---
-title: "Data Cleaning in R"
-author: "Octavio Medina"
-date: "`r Sys.Date()`"
 output: github_document
 ---
 
@@ -53,8 +50,7 @@ Isn't this cool? There's also a function to see the degree of missingness for ea
 
 ```{r}
 
-vis_miss(penguins_raw) +
-  theme_42()
+vis_miss(penguins_raw) 
 
 ```
 
