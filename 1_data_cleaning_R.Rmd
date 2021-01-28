@@ -1,0 +1,108 @@
+---
+title: "Data Cleaning in R"
+author: "Octavio Medina"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+
+# Data importing and cleaning
+
+Typically, you will receive a dataset that is most likely in an Excel (`.xlsx` or `.xls`) or `.csv` (comma-separated values) format, which you will have to load and clean before analyzing it. In this template we use the `penguins` sample dataset available in the `palmerpenguins` package, so we don't actually read in any data. Just remember that you can easily do that with the `read_csv` (for csv files), `read_excel`, or `read_dta` (for Stata files) functions. If you want to learn more about reading in data, a tutorial is available on our knowledge-sharing [platform](https://kyso.io/dashboard?s=data&team=ideas42data). 
+
+First, we load all the packages we'll need:
+
+```{r}
+
+library(palmerpenguins)
+library(visdat)
+library(skimr)
+library(tidyverse)
+library(tools42)
+
+# Using the penguins dataset
+data(penguins)
+
+```
+
+A good way to start is by looking at what variables are available in our dataset, as well as the number of observations. The `skim` function in the `skimr` package is a quick and easy way to summarize this. Consider it a beefed-up replacement of the Stata `summarize` command. You'll see you also get tiny histograms for your continuous data. Visualizing your data is **critical** and you should always, always spend some time plotting it. You won't understand your data unless you plot it.
+
+```{r}
+
+skim(penguins)
+
+```
+
+Great. Looks like most of our data is complete and falls under the expected ranges (that is, there are no crazy values for any of the variables). Let's get a sense of which variables are continuous and which are categorical (character or factor). 
+
+We can do that with the `vis_dat` function, which plots every observation and color-codes it by variable type. We could make it look nicer by adding the i42 theme, since this is a `ggplot` object.
+
+```{r}
+
+vis_dat(penguins_raw) 
+
+```
+
+Isn't this cool? There's also a function to see the degree of missingness for each of our variables. It's called `vis_miss`:
+
+```{r}
+
+vis_miss(penguins_raw) +
+  theme_42()
+
+```
+
+# Exploratory Analysis
+
+Ok, let's look at the relationships between variables. 
+
+This is interesting. I wonder if there's any differences by species!
+
+```{r}
+
+penguins %>%
+  viz_scatter(flipper_length_mm, bill_length_mm) +
+  aes(color = species) +
+  theme_42() +
+  scale_color_manual(values = palette_42("i42_bright"))
+
+
+```
+
+Now, a histogram of flipper length:
+
+
+```{r}
+
+penguins %>%
+  viz_hist(flipper_length_mm) +
+  aes(fill = species) +
+  facet_wrap(~species) +
+  theme_42() +
+  scale_fill_manual(values = palette_42("i42_bright"))
+
+
+```
+
+
+```{r preview, fig.height= 7, fig.width=8, dpi=300}
+
+library(hrbrthemes)
+library(wesanderson)
+
+penguins %>%
+  ggplot(aes(color = species, x = bill_length_mm, y = flipper_length_mm)) +
+  geom_point() +
+  theme_ipsum_tw() +
+  scale_color_manual(values=wes_palette("Darjeeling1")) +
+  labs(title = "This is the penguin plot!",
+       subtitle = "A plot of a bunch of penguins belonging to different species")
+
+
+```
