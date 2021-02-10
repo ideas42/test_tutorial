@@ -1,11 +1,16 @@
 ---
-output: github_document
+output: 
+  md_document:
+    variant: markdown
+  
 ---
 
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+#options("huxtable.knitr_output_format")
 ```
 
 
@@ -86,19 +91,41 @@ penguins %>%
 
 ```
 
+# Let's try a regression
 
 ```{r preview, fig.height= 7, fig.width=8, dpi=300}
-
-library(hrbrthemes)
-library(wesanderson)
 
 penguins %>%
   ggplot(aes(color = species, x = bill_length_mm, y = flipper_length_mm)) +
   geom_point() +
-  theme_ipsum_tw() +
-  scale_color_manual(values=wes_palette("Darjeeling1")) +
+  theme_42_bright() +
+  scale_color_manual(values=palette_42("i42_bright")) +
   labs(title = "This is the penguin plot!",
        subtitle = "A plot of a bunch of penguins belonging to different species")
 
 
 ```
+
+
+```{r}
+
+model1 <- lm(flipper_length_mm ~ bill_length_mm + species, data = penguins)
+
+summary(model1)
+
+```
+
+And now, a regression table!
+
+```{r}
+library(huxtable)
+
+
+huxreg(model1) 
+
+```
+
+
+
+
+
