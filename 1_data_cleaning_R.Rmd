@@ -1,8 +1,5 @@
 ---
-output: 
-  md_document:
-    variant: markdown
-  
+output: github_document
 ---
 
 
@@ -10,7 +7,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
-#options("huxtable.knitr_output_format")
 ```
 
 
@@ -118,10 +114,14 @@ summary(model1)
 And now, a regression table!
 
 ```{r}
+#library(modelsummary)
 library(huxtable)
+#options(huxtable.print = print_html)
+#options('huxtable.knitr_output_format')
+#options(huxtable.knitr_output_format = 'html')
 
 
-huxreg(model1) 
+huxreg(model1)
 
 ```
 
