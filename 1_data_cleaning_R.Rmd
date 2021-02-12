@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 
@@ -126,6 +127,27 @@ huxreg(model1)
 ```
 
 
+Let's look at a summary table.
+
+```{r}
+library(gtsummary)
+
+tbl_summary(select(penguins, species, bill_length_mm)) %>%
+  as_kable(format = 'markdown')
 
 
 
+```
+
+
+```{r}
+library(modelsummary)
+modelsummary(model1, output = "markdown")
+
+```
+
+
+```{r, results='asis'}
+datasummary_skim(penguins, format='markdown')
+
+```
